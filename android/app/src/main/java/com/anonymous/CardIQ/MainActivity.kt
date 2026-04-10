@@ -1,4 +1,4 @@
-package com.cardiq
+package com.anonymous.CardIQ
 
 import android.os.Build
 import android.os.Bundle

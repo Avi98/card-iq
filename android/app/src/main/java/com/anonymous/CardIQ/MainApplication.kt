@@ -1,4 +1,4 @@
-package com.cardiq
+package com.anonymous.CardIQ
 
 import android.app.Application
 import android.content.res.Configuration
