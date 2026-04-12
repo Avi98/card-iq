@@ -12,7 +12,9 @@ npm run ios        # Build iOS app
 
 ## Key facts
 
-- **Entry point**: `index.js` → `src/App.tsx`
+- **Entry point**: `index.js` → `app/_layout.tsx` (expo-router)
+- **Routes**: `app/` directory (expo-router file-based routing)
+- **Screens**: `src/screens/` or `app/` directories
 - **JS engine**: Hermes (enabled)
 - **New Architecture**: Enabled (Fabric + TurboModules)
 - **iOS deployment target**: 15.1+

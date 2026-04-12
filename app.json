@@ -3,6 +3,7 @@
     "name": "CardIQ",
     "slug": "CardIQ",
     "version": "1.0.0",
+    "scheme": "com.anonymous.CardIQ",
     "android": {
       "package": "com.anonymous.CardIQ"
     },
@@ -13,6 +14,12 @@
       "expo-web-browser",
       "expo-secure-store",
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "0f42578c-6ed4-4de0-bfdc-ded6c7e1bc38"
+      }
+    }
   }
 }
