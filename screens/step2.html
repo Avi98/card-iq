@@ -1,0 +1,272 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>CardIQ | Permissions</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary": "#452b00",
+              "on-surface-variant": "#c7c4d8",
+              "surface-container-high": "#25293a",
+              "inverse-surface": "#dee1f7",
+              "on-secondary-container": "#b0b4c9",
+              primary: "#c3c0ff",
+              "surface-tint": "#c3c0ff",
+              "on-surface": "#dee1f7",
+              "on-secondary-fixed-variant": "#414658",
+              tertiary: "#ffb955",
+              "on-primary-fixed-variant": "#3323cc",
+              "on-error-container": "#ffdad6",
+              error: "#ffb4ab",
+              "surface-container-lowest": "#090e1c",
+              secondary: "#c2c6db",
+              "on-primary-fixed": "#0f0069",
+              "on-secondary": "#2b3040",
+              "surface-bright": "#343949",
+              "surface-container-highest": "#2f3445",
+              "tertiary-fixed-dim": "#ffb955",
+              "error-container": "#93000a",
+              "secondary-container": "#414658",
+              "primary-container": "#4f46e5",
+              surface: "#0e1322",
+              "on-primary": "#1d00a5",
+              "surface-container-low": "#161b2b",
+              "on-tertiary-container": "#ffd49e",
+              "on-background": "#dee1f7",
+              "surface-variant": "#2f3445",
+              background: "#0e1322",
+              "inverse-primary": "#4d44e3",
+              outline: "#918fa1",
+              "surface-container": "#1a1f2f",
+              "on-error": "#690005",
+              "tertiary-fixed": "#ffddb4",
+              "inverse-on-surface": "#2b3040",
+              "secondary-fixed": "#dee1f7",
+              "on-primary-container": "#dad7ff",
+              "on-secondary-fixed": "#161b2b",
+              "outline-variant": "#464555",
+              "primary-fixed": "#e2dfff",
+              "secondary-fixed-dim": "#c2c6db",
+              "on-tertiary-fixed": "#291800",
+              "on-tertiary-fixed-variant": "#633f00",
+              "surface-dim": "#0e1322",
+              "tertiary-container": "#855600",
+              "primary-fixed-dim": "#c3c0ff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Inter"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .scanning-line {
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #c3c0ff, transparent);
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        box-shadow: 0 0 15px #4f46e5;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-surface-dim text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container"
+  >
+    <!-- Supressing TopAppBar and BottomNavBar as per "Destination Rule" (Task-Focused/Onboarding screen) -->
+    <main
+      class="min-h-screen flex flex-col items-center justify-center px-6 py-12 relative overflow-hidden"
+    >
+      <!-- Background Ambient Glows -->
+      <div
+        class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-container/10 blur-[120px] rounded-full"
+      ></div>
+      <div
+        class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-tertiary-container/5 blur-[120px] rounded-full"
+      ></div>
+      <!-- Header Content -->
+      <div class="w-full max-w-md text-center mb-10 z-10">
+        <span
+          class="text-primary font-label text-xs uppercase tracking-[0.2em] mb-4 block"
+          >Step 2 of 4</span
+        >
+        <h1
+          class="text-3xl font-bold font-headline tracking-tight text-on-surface mb-2"
+        >
+          Spend smart. Earn more.
+        </h1>
+        <p
+          class="text-on-surface-variant font-body text-sm leading-relaxed max-w-[280px] mx-auto"
+        >
+          Securely sync your transactions to maximize your credit card rewards
+          automatically.
+        </p>
+      </div>
+      <!-- Scanning Visualization -->
+      <div class="w-full max-w-md mb-12 flex justify-center z-10">
+        <div
+          class="relative w-72 h-44 rounded-xl bg-surface-container-highest/40 backdrop-blur-md overflow-hidden flex items-center justify-center group outline outline-1 outline-white/5"
+        >
+          <!-- Card Silhouette -->
+          <div
+            class="w-60 h-36 rounded-lg bg-gradient-to-br from-surface-container-high to-surface-container-low border border-white/5 relative overflow-hidden shadow-2xl"
+          >
+            <div
+              class="absolute top-4 left-4 w-10 h-8 rounded bg-primary-container/20 border border-primary-container/30"
+            ></div>
+            <div
+              class="absolute bottom-4 left-4 w-32 h-3 rounded bg-on-surface-variant/10"
+            ></div>
+            <div
+              class="absolute bottom-4 right-4 w-8 h-8 rounded-full bg-secondary-container/20"
+            ></div>
+            <!-- Scanning Line -->
+            <div class="scanning-line" style="top: 20%"></div>
+          </div>
+          <!-- Glass Overlay for Texture -->
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none"
+          ></div>
+        </div>
+      </div>
+      <!-- Permission Cards Section -->
+      <div class="w-full max-w-md space-y-4 z-10">
+        <!-- SMS Permission Card -->
+        <div
+          class="bg-surface-container p-5 rounded-2xl flex items-start gap-4 transition-all duration-200 hover:bg-surface-container-high group border border-transparent hover:border-outline-variant/10"
+        >
+          <div class="bg-primary-container/10 p-3 rounded-xl">
+            <span
+              class="material-symbols-outlined text-primary"
+              data-icon="sms"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >sms</span
+            >
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-headline font-semibold text-on-surface">
+                SMS access
+              </h3>
+              <span
+                class="material-symbols-outlined text-emerald-400"
+                data-icon="check_circle"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >check_circle</span
+              >
+            </div>
+            <p class="text-on-surface-variant text-sm leading-snug">
+              We read bank SMS to detect your cards. No personal messages.
+            </p>
+          </div>
+        </div>
+        <!-- Gmail Permission Card -->
+        <div
+          class="bg-surface-container p-5 rounded-2xl flex items-start gap-4 transition-all duration-200 hover:bg-surface-container-high group border border-transparent hover:border-outline-variant/10"
+        >
+          <div class="bg-tertiary-container/10 p-3 rounded-xl">
+            <span
+              class="material-symbols-outlined text-tertiary"
+              data-icon="mail"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >mail</span
+            >
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-headline font-semibold text-on-surface">
+                Gmail access
+              </h3>
+              <div
+                class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"
+              >
+                <div class="w-2 h-2 rounded-full bg-outline-variant/40"></div>
+              </div>
+            </div>
+            <p class="text-on-surface-variant text-sm leading-snug">
+              We scan bank emails only. Secure end-to-end processing.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Trust Indicator -->
+      <div
+        class="w-full max-w-md flex items-center justify-center gap-2 mt-8 z-10 opacity-60"
+      >
+        <span class="material-symbols-outlined text-[16px]" data-icon="lock"
+          >lock</span
+        >
+        <span
+          class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant"
+          >Military grade 256-bit encryption</span
+        >
+      </div>
+      <!-- CTA Section -->
+      <div class="w-full max-w-md mt-auto pt-10 z-10">
+        <button
+          class="w-full bg-primary-container text-on-primary-container py-4 px-6 rounded-xl font-bold text-base transition-transform duration-200 active:scale-95 shadow-lg shadow-primary-container/20 flex items-center justify-center gap-2"
+        >
+          Allow &amp; continue
+          <span
+            class="material-symbols-outlined text-[20px]"
+            data-icon="arrow_forward"
+            >arrow_forward</span
+          >
+        </button>
+        <button
+          class="w-full mt-4 py-2 text-on-surface-variant font-label text-xs uppercase tracking-widest hover:text-on-surface transition-colors"
+        >
+          Skip for now
+        </button>
+      </div>
+    </main>
+    <!-- Aesthetic Decorative Image (Invisible but provides context for generators if needed elsewhere) -->
+    <div class="hidden">
+      <img
+        data-alt="Abstract smooth visual representing digital security with deep navy gradients and glowing indigo crystal geometric shapes, high-end editorial tech style"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuABXufRGGIxKtQ4V0anCg8DxueUbXNTozOj4PLCej-eS-h-6rZieNDolV8aKL8-H6Y0zRUHTBiv9nPyEcWTVbrPWuo0yv9hUiIhHtodVHSjLiheeqMfjqWnDNciL7szxwaCNKlyJq1pSQDYyh2s4ioObUJwBUh5KadySqvBqACy-20r85FTkTDm6tQxdeTfMEgM7BBDiYS_dHDkxa2k_4nJAomlq-kOilw4tqtwduH7XJGfIbr9nT5RWUTNg4uZ4TeawLGz8p72Ug"
+      />
+    </div>
+  </body>
+</html>
