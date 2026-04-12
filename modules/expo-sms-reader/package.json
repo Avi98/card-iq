@@ -1,0 +1,10 @@
+{
+  "name": "expo-sms-reader",
+  "version": "0.1.0",
+  "description": "Android SMS reader native module for CardIQ",
+  "main": "index",
+  "files": ["android", "src", "index.ts", "expo-module.config.json"],
+  "peerDependencies": {
+    "expo": "*"
+  }
+}

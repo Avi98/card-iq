@@ -6,9 +6,14 @@ import {
   TouchableOpacity,
   StatusBar,
   Dimensions,
+  Platform,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
+import { PermissionStatus } from "expo-modules-core";
+import { requestPermissionsAsync } from "expo-sms-reader";
+import { startSmsPoll, stopSmsPoll } from "../services/SmsPollingService";
+import type { SmsMessage } from "expo-sms-reader";
 
 const { width, height } = Dimensions.get("window");
 
@@ -56,11 +61,59 @@ export default function PermissionsScreen(): React.JSX.Element {
   const [smsChecked, setSmsChecked] = React.useState(false);
   const [gmailChecked, setGmailChecked] = React.useState(false);
 
-  const handleAllowAndContinue = () => {
-    router.push("/step3");
+  // Stop polling if the user navigates away without continuing.
+  React.useEffect(() => {
+    return () => stopSmsPoll();
+  }, []);
+
+  const handleSmsToggle = async () => {
+    debugger;
+    if (smsChecked) {
+      // Already granted — toggling off is informational only; we don't revoke.
+      setSmsChecked(false);
+      stopSmsPoll();
+      return;
+    }
+
+    if (Platform.OS !== "android") {
+      setSmsChecked(true);
+      return;
+    }
+
+    try {
+      const result = await requestPermissionsAsync();
+      if (result.status === PermissionStatus.GRANTED) {
+        setSmsChecked(true);
+        startSmsPoll(handleIncomingSms);
+      }
+    } catch (e) {
+      console.error("SMS permission request failed:", e);
+    }
+  };
+
+  const handleIncomingSms = (msgs: SmsMessage[]) => {
+    // TODO: forward to card-detection logic in a later step.
+    console.log("New SMS messages:", msgs);
+  };
+
+  const handleAllowAndContinue = async () => {
+    debugger;
+    if (!smsChecked && Platform.OS === "android") {
+      try {
+        const result = await requestPermissionsAsync();
+        if (result.status === PermissionStatus.GRANTED) {
+          setSmsChecked(true);
+          startSmsPoll(handleIncomingSms);
+        }
+      } catch (e) {
+        console.error("SMS permission request failed:", e);
+      }
+    }
+    // router.push("/step3");
   };
 
   const handleSkip = () => {
+    stopSmsPoll();
     router.push("/step3");
   };
 
@@ -92,7 +145,7 @@ export default function PermissionsScreen(): React.JSX.Element {
             title="SMS access"
             description="We read bank SMS to detect your cards. No personal messages."
             checked={smsChecked}
-            onToggle={() => setSmsChecked((v) => !v)}
+            onToggle={handleSmsToggle}
           />
           <PermissionCard
             icon="📧"
